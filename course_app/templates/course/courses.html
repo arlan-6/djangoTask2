@@ -1,0 +1,27 @@
+{% extends "../base.html" %} {% block title %}Course page{% endblock title %}
+{%block content %}
+
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url "home_page" %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Courses</a></li>
+        </ol>
+    </nav>
+    <h1>Courses</h1>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{course.name}}</h5>
+                    <p class="card-text">{{course.description   }}</p>
+                    <a href="{% url "lessons_page" slug=course.slug %}" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,36 @@
+{% extends "../base.html" %}<br />
+{% block title %}{{lesson.theme}} {% endblock title%}
+<br />
+{%block content %}
+<div class="container py-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url "home_page" %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url "courses_page" %}">Courses</a></li>
+      <li class="breadcrumb-item"><a href="{% url "lessons_page" slug=course.slug %}">{{course.name}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{lesson.theme}}
+      </li>
+    </ol>
+  </nav>
+  <h1>{{lesson.theme}}</h1>
+  <div class="card">
+    <div class="card-body">
+      {% if lesson.content %} {{lesson.content}} {% endif %}
+      <br />
+      {% if lesson.youtube_url %}
+      <iframe
+        width="560"
+        height="315"
+        src="{{lesson.youtube_url}}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in
+        picture"
+      />
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+{%endblock%}

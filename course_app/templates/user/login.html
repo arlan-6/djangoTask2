@@ -1,0 +1,25 @@
+{% extends "../base.html" %} {% block title %}Login{% endblock title %}
+{% load crispy_forms_tags %}
+
+{%block content %}
+<div class="container py-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url "home_page" %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Login</a></li>
+        </ol>
+    </nav>
+    <h1>Login</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method=post>
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class='btn btn-primary btn-lg px-4 gap-3'>Login</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{%endblock%}
